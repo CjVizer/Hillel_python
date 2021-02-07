@@ -72,6 +72,7 @@ def my_lru_cache(max_size=8):
 
 @my_lru_cache(20)
 def sum_of_numbers(number1, number2):
+    """Calculates the sum of numbers"""
     return number1 + number2
 
 
