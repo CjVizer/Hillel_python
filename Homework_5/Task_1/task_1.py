@@ -20,6 +20,7 @@ with open('poem.txt', 'r', encoding='utf-8') as file_original:  # Opening the or
                 words.pop()  # Remove the last word from the list
 
             for word in words:
+                # Remove unnecessary words and spaces, then combine everything into one line
                 line = ' '.join(line.replace(word, '', 1).split())
 
-            file_converted.write(line + '\n')
+            file_converted.write(line + '\n')  # Let's write the result to a new file
