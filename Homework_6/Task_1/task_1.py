@@ -8,7 +8,6 @@
 3) Получить список IP адресов без первых октетов (10.11.12.13 -> 11.12.13)
 4) Получить список последних октетов IP адресов (10.11.12.13 -> 13)
 """
-from random import randint
 
 
 class IpHolder:
@@ -26,13 +25,3 @@ class IpHolder:
 
     def get_ips_last_octets(self):
         return [ip_address.split('.')[-1] for ip_address in self.__ip_list]
-
-
-# Tests
-ip = ['.'.join(str(randint(0, 255)) for _ in range(4)) for _ in range(300)]
-
-ip_holder = IpHolder(ip)
-print(ip_holder.get_ips())
-print(ip_holder.get_deployed_ips())
-print(ip_holder.get_ips_without_first_octet())
-print(ip_holder.get_ips_last_octets())
