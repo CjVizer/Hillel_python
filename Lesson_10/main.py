@@ -33,20 +33,29 @@ class Player:
     def get_weight(self):
         return f'{self.name} weight is {self.weight}'
 
+    def get_team(self):
+        return self.__dict__.get('team', 'Not a member of the team')
+
 
 team1 = Team('Team 1')
+team2 = Team('Team 2')
 player_1 = Player('Ivan', 76, 186, 132)
 player_2 = Player('Vasya', 55, 173, 76)
-team1.add_player(player_1)
-team1.add_player(player_2)
-team1.get_team()
-
-print()
-
-team2 = Team('Team 2')
 player_3 = Player('Oleg', 42, 156, 77)
 player_4 = Player('Kirill', 35, 149, 66)
+player_5 = Player('Orest', 21, 174, 65)
+team1.add_player(player_1)
+team1.add_player(player_2)
 team2.add_player(player_3)
 team2.add_player(player_4)
+
+team1.get_team()
+print()
 team2.get_team()
+
+print(player_1.get_team())
+print(player_2.get_team())
+print(player_3.get_team())
+print(player_4.get_team())
+print(player_5.get_team())
 
