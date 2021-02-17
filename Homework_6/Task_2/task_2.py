@@ -30,7 +30,11 @@ class JsonHandler:
         try:
             with open(file_path, 'r') as file:
                 file_data = file.read()
-            return json.loads(file_data)
+            try:
+                return json.loads(file_data)
+            except json.JSONDecodeError:
+                print(f'Unable to decode Json file.')
+
         except FileNotFoundError:
             print(f'File with the name "{self.__file_name}" does not exist')
 
@@ -46,3 +50,8 @@ class JsonHandler:
 
     def get_absolute_path(self):
         return os.path.abspath(self.__file_name)
+
+
+hh = JsonHandler('example_json_1.json')
+
+hh.read_json()
