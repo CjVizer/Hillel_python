@@ -50,8 +50,3 @@ class JsonHandler:
 
     def get_absolute_path(self):
         return os.path.abspath(self.__file_name)
-
-
-hh = JsonHandler('example_json_1.json')
-
-hh.read_json()
