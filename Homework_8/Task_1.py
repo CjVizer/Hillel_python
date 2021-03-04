@@ -3,7 +3,7 @@
 # Ваш дескриптор должен проверять формат email который вы пытаетесь назначить
 import re
 
-pattern = re.compile("[A-Za-z0-9#-_~!$&'()*+,;=:.]+@[a-z.]+")
+pattern = re.compile("[A-Za-z0-9]+@[a-z.]+")
 
 
 class EmailDescriptor:
