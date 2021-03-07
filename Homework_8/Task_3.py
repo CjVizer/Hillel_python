@@ -20,7 +20,4 @@ new_data_row = Data()
 data_row.number = 5
 new_data_row.number = 10
 
-print(data_row.number)
-print(new_data_row.number)
-
-# assert data_row.number != new_data_row.number
+assert data_row.number != new_data_row.number
