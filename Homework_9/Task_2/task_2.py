@@ -17,32 +17,55 @@
 
 # Структура пайплайна:
 # ```
-def coroutine(*args):
-    # your code here
+from functools import wraps
+from time import sleep
+
+
+def coroutine(func):
+    """Decorator for initialization coroutine"""
+
+    @wraps(func)
+    def init(*args, **kwargs):
+        function = func(*args, **kwargs)
+        next(function)
+        return function
+
+    return init
     pass
 
 
 @coroutine
 def grep(*args):
-    # your code here
-    pass
+    pattern, printer_func = args
+    while True:
+        line = yield
+        if pattern in line:
+            printer_func.send(line)
 
 
 @coroutine
 def printer():
-    # your code here
-    pass
+    while True:
+        line = yield
+        print(line.strip('\n'))
 
 
 @coroutine
 def dispenser(*args):
-    # your code here
-    pass
+    while True:
+        line = yield
+        for grep_cr in args[0]:
+            grep_cr.send(line)
 
 
 def follow(*args):
-    # your code here
-    pass
+    file, disp = args
+    file.seek(0, 2)
+    while True:
+        line = file.readline()
+        if line:
+            disp.send(line)
+        sleep(0.5)
 
 
 # ```
