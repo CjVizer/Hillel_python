@@ -31,7 +31,6 @@ def coroutine(func):
         return function
 
     return init
-    pass
 
 
 @coroutine
