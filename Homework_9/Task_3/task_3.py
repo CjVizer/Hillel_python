@@ -28,22 +28,33 @@ def coroutine_initializer(func):
 
 @coroutine_initializer
 def coroutine_1():
+    cr = coroutine_2()
     while True:
         try:
             elem = yield
             print(f'CR_1 take element {elem}')
+            cr.send(elem)
         except GeneratorExit:
-            print('"GeneratorExit" Exception!!!')
+            print('"Coroutine 1" DONE!')
+            raise
+
+
+@coroutine_initializer
+def coroutine_2():
+    while True:
+        try:
+            elem = yield
+            print(f'CR_2 take element {elem}')
+        except GeneratorExit:
+            print('"Coroutine 2" DONE!')
             raise
 
 
 def source():
     cr = coroutine_1()
-    elems = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
-    for elem in elems:
+    elements = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
+    for elem in elements:
         cr.send(elem)
-        if elem == 'Six':
-            cr.close()
 
 
 source()
