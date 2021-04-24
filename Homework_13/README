@@ -1,0 +1,23 @@
+# Setting up a new environment:
+python -m venv env
+
+# Activating environment:
+source env/bin/activate  # On Windows use env\Scripts\activate
+
+# Installing the required modules:
+pip install -r requirements.txt
+
+# Change directory to "tutorial"
+
+# Create your local DB migration
+python manage.py makemigrations snippets
+python manage.py migrate
+
+# Create Super user:
+python manage.py createsuperuser
+
+# Run server
+python manage.py runserver
+
+# Open browser by link:
+http://127.0.0.1:8000/
